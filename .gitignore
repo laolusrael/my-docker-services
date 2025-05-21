@@ -11,3 +11,10 @@
 
 # Ignore all files in any cache sub-folder
 **/cache/*
+
+# Ignore .env files
+**/.env
+**/.env.local
+**/.env.*.local
+
+# But keep example files
