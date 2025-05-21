@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    hostname: space-rabbit
+    volumes:
+      - ./def/definitions.json:/etc/rabbitmq/definitions.json
+      - ./def/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+      - ./data:/var/lib/rabbitmq/mnesia/rabbit@space-rabbit
+      - ./logs:/var/log/rabbitmq/log
+    ports:
+      - 5672:5672
+      - 15672:15672

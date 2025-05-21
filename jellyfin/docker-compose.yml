@@ -1,0 +1,20 @@
+version: "2"
+services:
+  jellyfin:
+    image: linuxserver/jellyfin
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+      - UMASK_SET=022 #optional
+    volumes:
+      - ./config:/config
+      - ./transcode:/transcode
+      - ./media/tv:/tv
+      - ./media/movies:/movies
+      - ./media/music:/music
+    ports:
+      - 8096:8096
+      - 8920:8920
+    restart: unless-stopped
