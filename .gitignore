@@ -1,0 +1,13 @@
+# Ignore all files in any data sub-folder
+**/data/*
+
+# Ignore all files in any logs sub-folder
+**/logs/*
+**/log/*
+
+# Ignore all files in any temp sub-folder
+**/temp/*
+**/tmp/*
+
+# Ignore all files in any cache sub-folder
+**/cache/*
