@@ -6,19 +6,19 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Africa/Lagos
-      - SUPERUSER_EMAIL=
-      - SUPERUSER_PASSWORD=
-      - ALLOWED_HOST=
-      - DB_NAME=
-      - DB_USER=
-      - DB_PASSWORD=
-      - DB_HOST=
-      - DB_PORT=
-      - REDIS_HOST=
-      - REDIS_PORT=
-      - REDIS_PASSWORD=
-      - REDIS_DB_TASK=
-      - REDIS_DB_CACHE=
+      - SUPERUSER_EMAIL=${SUPERUSER_EMAIL}
+      - SUPERUSER_PASSWORD=${SUPERUSER_PASSWORD}
+      - ALLOWED_HOST=${ALLOWED_HOST}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_DB_TASK=${REDIS_DB_TASK}
+      - REDIS_DB_CACHE=${REDIS_DB_CACHE}
       - BASE_PATH= #optional
       - REMOTE_AUTH_ENABLED= #optional
       - REMOTE_AUTH_BACKEND= #optional
@@ -28,6 +28,9 @@ services:
       - REMOTE_AUTH_DEFAULT_PERMISSIONS= #optional
     volumes:
       - ./config:/config
-    ports:
-      - 8000:8000
+    # use network  mode host if running on a server or dedicated vm
+    network_mode: host
+    # if running on your computer
+    # ports:
+    #  - 8000:8000
     restart: unless-stopped
