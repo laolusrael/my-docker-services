@@ -1,0 +1,9 @@
+services:
+  redis:
+    image: redis:latest
+    network_mode: host
+    volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    environment:
+      -   REDIS_CONFIG_FILE:/usr/local/etc/redis/redis.conf
+    restart: unless-stopped

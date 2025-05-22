@@ -16,5 +16,7 @@
 **/.env
 **/.env.local
 **/.env.*.local
+!.env.example
+!**/.env.example
 
 # But keep example files
