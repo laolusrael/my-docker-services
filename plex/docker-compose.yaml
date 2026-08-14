@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=1000 # Change to your Pi user's UID (run 'id' in terminal)
+      - PGID=1003 # Change to your Pi user's GID (run 'id' in terminal)
+      - TZ=Africa/Lagos # Change to your timezone (e.g., America/New_York)
+      - VERSION=docker
+      - PLEX_CLAIM=claim-LbYykA2bd8eD77avLt3Q
+    volumes:
+      - ./config:/config
+      - /mnt/usb_ntfs/Root:/media
+    restart: unless-stopped

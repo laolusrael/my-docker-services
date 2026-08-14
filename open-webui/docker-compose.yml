@@ -1,0 +1,13 @@
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    restart: always
+    volumes:
+      - open-webui:/app/backend/data
+    ports:
+      - 3000:8000
+    environment:
+      OLLAMA_BASE_URL: https://basestation.local
+
+volumes:
+   open-webui:

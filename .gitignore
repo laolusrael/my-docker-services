@@ -5,6 +5,10 @@
 **/logs/*
 **/log/*
 
+# Ignore configuration and media folders
+**/config/*
+**/media/*
+
 # Ignore all files in any temp sub-folder
 **/temp/*
 **/tmp/*
@@ -18,5 +22,8 @@
 **/.env.*.local
 !.env.example
 !**/.env.example
+
+# Ignore .conf files
+**/.conf
 
 # But keep example files

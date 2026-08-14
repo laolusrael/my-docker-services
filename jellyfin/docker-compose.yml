@@ -1,20 +1,31 @@
-version: "2"
 services:
   jellyfin:
-    image: linuxserver/jellyfin
+    image: jellyfin/jellyfin
     container_name: jellyfin
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=America/Chicago
+      - TZ=Africa/Lagos
       - UMASK_SET=022 #optional
+    #optional devices block if running on raspberrypi 5
+    devices:
+      - /dev/dri:/dev/dri
+    network_mode: host
     volumes:
       - ./config:/config
-      - ./transcode:/transcode
-      - ./media/tv:/tv
-      - ./media/movies:/movies
-      - ./media/music:/music
+      - ./cache:/cache
+      - type: bind
+        source: ./media/tv
+        target: /tv
+      - type: bind
+        source: /mnt/usb_ntfs/Root/Movies
+        target: /media
+        read_only: true
+      - type: bind
+        target: /mnt/usb_ntfs/Root/Music
+        source: /media2
+        read_only: true
     ports:
-      - 8096:8096
-      - 8920:8920
+      - 8096:8096/tcp
+      - 7359:7359/udp
     restart: unless-stopped

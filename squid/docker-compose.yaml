@@ -1,0 +1,25 @@
+services:
+  squid-proxy:
+    image: ubuntu/squid:latest
+    container_name: squid_cache
+    restart: always
+    ports:
+      - "3128:3128"
+    volumes:
+      - ./squid.conf:/etc/squid/squid.conf:ro
+      - squid-cache:/var/spool/squid
+      - squid-logs:/var/log/squid
+
+  wpad-server:
+    image: nginx:alpine
+    container_name: wpad_server
+    ports:
+      - "80:80"
+    volumes:
+      - ./wpad.dat:/usr/share/nginx/html/wpad.data:ro
+      - ./wpad.dat:/usr/share/nginx/html/wpad.da:ro
+    restart: always
+
+volumes:
+  squid-cache:
+  squid-logs:

@@ -1,11 +1,24 @@
 services:
   postgres:
-    image: postgres:14.2
+    image: postgres:18.3
+    restart: always
     ports:
       - 5432:5432
     volumes:
-      - ./data:/var/lib/postgresql/data
+      - ~/pgdata:/var/lib/postgresql
     environment:
       - POSTGRES_PASSWORD=admin
       - POSTGRES_USER=appdata
-      - POSTGRES_DB=europarcs
+      - POSTGRES_DB=dyconnect
+
+  pgadmin4:
+    image: elestio/pgadmin:latest
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: laolusrael@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: heaven
+      PGADMIN_LISTEN_PORT: 8080
+    ports:
+      - 8001:8080
+    volumes:
+        - ~/pgadmin/servers.json:/pgadmin4/servers.json
