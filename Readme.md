@@ -1,4 +1,4 @@
-# Docker Repository
+# Docker Compose Repository
 
 This repository contains resources and examples related to Docker containerization. The content is designed to help users understand, build, and manage Docker containers for various applications.
 
